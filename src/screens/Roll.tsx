@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
 import {
   Select,
@@ -65,7 +64,7 @@ function ReadinessGlance({ n }: { n: NSman }) {
 }
 
 export function Roll() {
-  const { records, selected, toggle, clearSelection, selectMany, openDrilldown, target, go, changes } =
+  const { records, selected, toggle, clearSelection, selectMany, openDrilldown, go, changes } =
     useStore();
 
   const [q, setQ] = useState("");
@@ -91,7 +90,6 @@ export function Roll() {
 
   const selectedList = records.filter((n) => selected.has(n.id));
   const selectedStrength = selectedList.length;
-  const pct = Math.min((selectedStrength / target) * 100, 100);
   const anyFilter =
     subUnit !== "All" || vocation !== "All" || elig !== "All" || hideBlocked || q;
 
@@ -167,13 +165,7 @@ export function Roll() {
         <div className="flex flex-1 items-center gap-3">
           <div className="flex flex-col">
             <span className="text-xs text-fg-subtle">Selected strength</span>
-            <span className="text-lg font-bold tabular-nums text-fg">
-              {selectedStrength}
-              <span className="text-sm font-normal text-fg-subtle"> / {target}</span>
-            </span>
-          </div>
-          <div className="hidden max-w-[220px] flex-1 sm:block">
-            <Progress value={pct} />
+            <span className="text-lg font-bold tabular-nums text-fg">{selectedStrength}</span>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
