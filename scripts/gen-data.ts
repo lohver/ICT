@@ -129,10 +129,11 @@ type Cause =
   | "overseas-edge"
   | "pes"
   | "deferment"
-  | "avail-ihl"
-  | "avail-disruption"
-  | "avail-overseas-study"
-  | "avail-callup6mo"
+  | "ihl"
+  | "disruption"
+  | "overseas-study"
+  | "tenure"
+  | "nr"
   | "licence-hard"
   | "clearance"
   | "offence"
@@ -228,7 +229,6 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
 
   // clean defaults
   let pes: PesGrade = pesForVocation(vocation, true);
-  let availability: NSmanSource["availability"]["value"] = "Available";
   let deferment: NSmanSource["defermentStatus"]["value"] = weighted([["None", 88], ["Rejected", 6], ["Applied", 6]]);
   let clearance: NSmanSource["clearanceG50"]["value"] = weighted([["Cleared", 90], ["Pending", 6], ["Expired", 4]]);
   let licence: NSmanSource["licence"]["value"] =
@@ -242,6 +242,11 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
   let offenceOpen = false;
   let awol = false;
   let medicalActive = false;
+  // decomposed non-availability + liability (each maps to one KB dataset)
+  let ihl: NSmanSource["ihl"]["value"] = { studying: false };
+  let disruption: NSmanSource["disruption"]["value"] = { active: false, illustrative: true };
+  let minServiceMet = true;
+  let nrPhaseStale = false;
 
   // clean records must NOT trip any soft rule
   clearance = "Cleared";
@@ -269,17 +274,20 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
     case "deferment":
       deferment = "Approved";
       break;
-    case "avail-ihl":
-      availability = "IHL / studying";
+    case "ihl":
+      ihl = { studying: true, overseas: false, institution: pick(["NUS", "NTU", "SMU", "SIT", "SUSS"]), expectedEnd: daysAgoISO(-200) };
       break;
-    case "avail-disruption":
-      availability = "Disruption";
+    case "overseas-study":
+      ihl = { studying: true, overseas: true, institution: pick(["overseas — UK", "overseas — Australia", "overseas — USA"]), expectedEnd: daysAgoISO(-260) };
       break;
-    case "avail-overseas-study":
-      availability = "Overseas study";
+    case "disruption":
+      disruption = { active: true, reason: weighted([["Disruption", 3], ["Newborn", 2], ["Other WOG reason", 1]]), illustrative: true };
       break;
-    case "avail-callup6mo":
-      availability = "Call-up < 6 months before ICT";
+    case "tenure":
+      minServiceMet = false; // min-service before ICT not met (6-mo rule unverified)
+      break;
+    case "nr":
+      nrPhaseStale = true; // call-up NR phase date predates the ICT window
       break;
     case "licence-hard":
       // force a Driver with expired licence
@@ -337,8 +345,18 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
     awol,
   };
 
-  const ornsYears = 1 + Math.floor(rand() * 10);
-  const firstYearHK = 2016 + Math.floor(rand() * 9);
+  // tenure — a min-service shortfall reads as an early-cycle NSman
+  const ornsYears = minServiceMet ? 1 + Math.floor(rand() * 10) : 0;
+  const firstYearHK = minServiceMet ? 2016 + Math.floor(rand() * 9) : 2025;
+  const hkClocked = minServiceMet ? Math.floor(rand() * 70) : Math.floor(rand() * 5);
+  const mut = 1 + Math.floor(rand() * 3);
+
+  // call-up NR — clean: cut just before the window & reviewed recently.
+  // nr cause: phase date long before the window (stale call-up record).
+  const callUpNR = {
+    phaseDate: nrPhaseStale ? daysBeforeWindow(200) : daysBeforeWindow(8),
+    dateReviewed: nrPhaseStale ? daysAgoISO(210) : freshDate(),
+  };
 
   const rec: NSmanSource = {
     id: `NS-${String(idx).padStart(3, "0")}`,
@@ -350,18 +368,19 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
     serviceType: "Operationally-Ready NSman",
     firstYearHK,
     ornsYears,
-    hkClocked: Math.floor(rand() * 70),
-    mut: 1 + Math.floor(rand() * 3),
+    hkClocked,
+    mut,
     vocation: field("vocation", vocationFinal, daysAgoISO(30 + Math.floor(rand() * 300))),
     pes: field("pes", pes, freshDate()),
     appointmentHeld: field("appointmentHeld", pick(APPOINTMENTS), daysAgoISO(20 + Math.floor(rand() * 200))),
-    availability: field("availability", availability, freshDate()),
     ipptStatus: field("ipptStatus", ipptStatus, daysAgoISO(2 + Math.floor(rand() * 25))),
     medical: field("medical", medicalSummary, freshDate()),
     defermentStatus: field("defermentStatus", deferment, freshDate()),
 
     callUpDeviation: field("callUpDeviation", deviations, freshDate()),
     typeOfService: field("typeOfService", { current: tosCurrent, futureDated: futureTOS }, freshDate()),
+    callUpNR: field("callUpNR", callUpNR, callUpNR.dateReviewed),
+    tenure: field("tenure", { ornsYears, hkClocked, mut, minServiceMet }, daysAgoISO(20 + Math.floor(rand() * 120))),
     offences: field("offences", offences, freshDate()),
     travelHistory: field("travelHistory", {
       exitPermits,
@@ -377,9 +396,8 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
       refresherFor: chance(0.1) ? "ACT-ICT2023" : null,
     }, freshDate()),
     attachment: field("attachment", attachment, daysAgoISO(10 + Math.floor(rand() * 60))),
-    ihl: field("ihl", availability === "IHL / studying"
-      ? { studying: true, institution: pick(["NUS", "NTU", "SMU", "SIT", "SUSS"]), expectedEnd: daysAgoISO(-200) }
-      : { studying: false }, daysAgoISO(20 + Math.floor(rand() * 100))),
+    ihl: field("ihl", ihl, daysAgoISO(20 + Math.floor(rand() * 100))),
+    disruption: field("disruption", disruption, freshDate()),
 
     sar21Currency: field("sar21Currency", sar21, daysAgoISO(5 + Math.floor(rand() * 80))),
     clearanceG50: field("clearanceG50", clearance, daysAgoISO(5 + Math.floor(rand() * 80))),
@@ -391,7 +409,7 @@ function makeRecord(idx: number, subUnit: string, cause: Cause): NSmanSource {
 }
 
 // ---------- freshness + conflict texture ----------
-const VOLATILE_STALE_KEYS = ["availability", "defermentStatus", "medical", "ipptStatus"] as const;
+const VOLATILE_STALE_KEYS = ["disruption", "defermentStatus", "medical", "ipptStatus"] as const;
 const CURRENCY_STALE_KEYS = ["sar21Currency", "clearanceG50", "licence", "pes"] as const;
 
 function makeStale(rec: NSmanSource) {
@@ -429,10 +447,11 @@ function build() {
     ["overseas-edge", 4],
     ["pes", 3],
     ["deferment", 2],
-    ["avail-ihl", 2],
-    ["avail-disruption", 1],
-    ["avail-overseas-study", 1],
-    ["avail-callup6mo", 1],
+    ["ihl", 2],
+    ["disruption", 1],
+    ["overseas-study", 1],
+    ["tenure", 2],
+    ["nr", 2],
     ["licence-hard", 1],
     ["clearance", 10],
     ["offence", 6],
@@ -476,7 +495,7 @@ console.log("Eligibility:",
   `| Blocked ${count((r) => r.eligibility.status === "Blocked")} (${pct(count((r) => r.eligibility.status === "Blocked"))})`,
 );
 console.log("Decided-by:",
-  ["R0-deviation", "R-tos", "R-overseas", "R-offences", "R-medical"].map(
+  ["R0-deviation", "R-tos", "R-overseas", "R-ihl", "R-disruption", "R-tenure", "R-nr", "R-offences", "R-medical"].map(
     (id) => `${id} ${count((r) => r.eligibilityTrace.decidedBy === id)}`,
   ).join(" | "),
 );

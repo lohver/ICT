@@ -24,7 +24,7 @@ import type {
   RuleEval,
 } from "@/domain/types";
 import { ageInDays, freshnessThreshold, isStale } from "@/domain/engine";
-import { ASPIRATIONAL_NOTE, FIELD_LABELS, FIELD_PROVENANCE } from "@/domain/constants";
+import { ASPIRATIONAL_NOTE, FIELD_LABELS, FIELD_PROVENANCE, HOLE_NOTE } from "@/domain/constants";
 import type { Provenance } from "@/domain/types";
 
 // ------------------------------------------------------------
@@ -69,6 +69,10 @@ export function EligibilityBadge({ state }: { state: EligibilityState }) {
 // Rule-trace row (used inside the eligibility explain popover).
 // ------------------------------------------------------------
 function ResultDot({ result }: { result: RuleEval["result"] }) {
+  // "cannot-evaluate" (a hole) reads as a hollow ring — evaluated, but no verdict.
+  if (result === "cannot-evaluate") {
+    return <span className="mt-1.5 size-2 shrink-0 rounded-full border-2 border-border-strong" />;
+  }
   const color =
     result === "block"
       ? "bg-danger"
@@ -106,6 +110,11 @@ export function RuleTrace({ trace, decidedBy }: { trace: RuleEval[]; decidedBy?:
                 {r.result === "skipped" && (
                   <span className="text-[10px] uppercase tracking-wide text-fg-subtle">
                     not reached
+                  </span>
+                )}
+                {r.result === "cannot-evaluate" && (
+                  <span className="rounded-xs bg-bg-muted px-1 text-[10px] font-medium uppercase tracking-wide text-fg-subtle">
+                    cannot evaluate · hole
                   </span>
                 )}
               </div>
@@ -204,7 +213,7 @@ export function FieldProvenance<T>({
   const label = FIELD_LABELS[fieldKey] ?? fieldKey;
   const display = render ? render(field.value) : String(field.value);
   const prov = fieldProvenance(fieldKey, field);
-  const aspirational = prov === "gap" || prov === "hole";
+  const provNote = prov === "hole" ? HOLE_NOTE : prov === "gap" ? ASPIRATIONAL_NOTE : null;
   return (
     <Popover>
       <PopoverTrigger
@@ -233,7 +242,7 @@ export function FieldProvenance<T>({
           <dt className="text-fg-subtle">Source</dt>
           <dd className="text-fg">
             {field.source}
-            {aspirational && <span className="text-warning"> · {ASPIRATIONAL_NOTE}</span>}
+            {provNote && <span className="text-warning"> · {provNote}</span>}
           </dd>
           <dt className="text-fg-subtle">As of</dt>
           <dd className="text-fg">

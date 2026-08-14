@@ -2,12 +2,19 @@
 // Orchestration engine — deterministic, explainable.
 // Computes eligibility + advisory from source fields at load time.
 // Every determination returns a reason trace (rule fired + inputs).
+//
+// Rule set + order mirror the KB "Eligibility data-source mapping"
+// rules table. Precedence: BLOCKS win over NeedsCheck regardless of
+// order (KB: "the first blocking rule sets the state"); NeedsCheck is
+// raised only when no block fired. Readiness signals (IPPT, SAR-21,
+// ATMS, MUT) never touch eligibility here — they inform selection only.
 // ============================================================
 import {
   DEFAULT_FRESHNESS_DAYS,
   FIELD_LABELS,
   FIELD_PROVENANCE,
   FRESHNESS_DAYS,
+  MIN_SERVICE_MONTHS_UNVERIFIED,
   NOW,
   pesRank,
   TOS_LIABLE,
@@ -15,7 +22,6 @@ import {
 } from "./constants";
 import type {
   AdvisorySignal,
-  BlockReason,
   EligibilityResult,
   Field,
   IctWindow,
@@ -23,6 +29,7 @@ import type {
   NSmanSource,
   RuleEval,
   RuleInput,
+  RuleResult,
 } from "./types";
 
 // ---------- date helpers ----------
@@ -62,51 +69,93 @@ function overlapsICT(aStart: string, aEnd: string, w: IctWindow): boolean {
 }
 
 // ============================================================
-// Eligibility resolution — block rules applied in order; first
-// match sets the state. Returns the full ordered trace (§6a).
+// Eligibility resolution. Every rule is evaluated (no short-circuit)
+// so the trace is complete; the OUTCOME is then the first Block by
+// order, else the first NeedsCheck, else Eligible (KB rules table).
+// A `cannot-evaluate` row (Disruption/newborn — a hole) never gates.
 // ============================================================
 export function resolveEligibility(n: NSmanSource, window: IctWindow): EligibilityResult {
   const trace: RuleEval[] = [];
-  let decided = false;
-  let state: EligibilityResult["state"] = { status: "Eligible" };
-  let decidedBy: string | undefined;
-
   const req = VOCATIONS[n.vocation.value];
 
-  // Rule 0 — Call-Up Deviation (OASIS block mechanism). A non-empty
-  // deviation array blocks; the reasonLabel is surfaced verbatim.
+  let blockState: EligibilityResult["state"] | undefined;
+  let blockBy: string | undefined;
+  let needsState: EligibilityResult["state"] | undefined;
+  let needsBy: string | undefined;
+
+  function push(
+    id: string,
+    label: string,
+    result: RuleResult,
+    detail: string,
+    inputs: RuleInput[],
+    state?: EligibilityResult["state"],
+  ) {
+    trace.push({ id, label, result, detail, inputs });
+    if (result === "block" && state && !blockState) {
+      blockState = state;
+      blockBy = id;
+    } else if (result === "needs-check" && state && !needsState) {
+      needsState = state;
+      needsBy = id;
+    }
+  }
+
+  // 1 — Call-Up Deviation (OASIS block mechanism) → Blocked (label verbatim).
   {
     const devs = n.callUpDeviation.value;
     const fired = devs.length > 0;
-    trace.push({
-      id: "R0-deviation",
-      label: "No open Call-Up Deviation",
-      result: fired ? "block" : "pass",
-      detail: fired
+    push(
+      "R0-deviation",
+      "No open Call-Up Deviation",
+      fired ? "block" : "pass",
+      fired
         ? `Blocked — Call-Up Deviation: ${devs.map((d) => d.reasonLabel).join("; ")}`
         : "No Call-Up Deviation on record",
-      inputs: [
+      [
         inputFrom(
           "callUpDeviation",
           n.callUpDeviation,
           fired ? devs.map((d) => `${d.reasonCode} ${d.reasonLabel}`).join(", ") : "none",
         ),
       ],
-    });
-    if (!decided && fired) {
-      state = {
-        status: "Blocked",
-        reason: devs[0].reasonLabel,
-        code: devs[0].reasonCode,
-        detail: "Call-Up Deviation",
-      };
-      decidedBy = "R0-deviation";
-      decided = true;
-    }
+      fired
+        ? {
+            status: "Blocked",
+            reason: devs[0].reasonLabel,
+            code: devs[0].reasonCode,
+            detail: "Call-Up Deviation",
+          }
+        : undefined,
+    );
   }
 
-  // Rule TOS — Type-of-Service liability. Current non-liable TOS blocks;
-  // a future-dated TOS overlapping the ICT window needs a check.
+  // 2 — PES vs role → Blocked.
+  {
+    const pesOk = req ? pesRank(n.pes.value) <= pesRank(req.minPES) : true;
+    const fired = !pesOk;
+    push(
+      "R1-pes",
+      "PES meets role requirement",
+      fired ? "block" : "pass",
+      req
+        ? fired
+          ? `Blocked — PES ${n.pes.value} below ${n.vocation.value} requirement ${req.minPES}`
+          : `PES ${n.pes.value} meets ${n.vocation.value} requirement ${req.minPES}`
+        : `No PES requirement mapped for ${n.vocation.value}`,
+      [inputFrom("pes", n.pes), inputFrom("vocation", n.vocation)],
+      fired
+        ? {
+            status: "Blocked",
+            reason: "Down-PES / medical",
+            detail: `PES ${n.pes.value} below role requirement ${req?.minPES}`,
+          }
+        : undefined,
+    );
+  }
+
+  // 3 — Liability / TOS → Blocked. Current non-liable TOS, or a future-dated
+  // TOS effective across the ICT window, blocks (KB: → Blocked, not liable).
   {
     const tos = n.typeOfService.value;
     const currentLiable = TOS_LIABLE.has(tos.current);
@@ -114,187 +163,145 @@ export function resolveEligibility(n: NSmanSource, window: IctWindow): Eligibili
       overlapsICT(f.startDate, f.endDate, window),
     );
     const fired = !currentLiable || !!overlappingFuture;
-    trace.push({
-      id: "R-tos",
-      label: "Liable for service across the ICT window",
-      result: decided ? "skipped" : fired ? (!currentLiable ? "block" : "needs-check") : "pass",
-      detail: !currentLiable
+    push(
+      "R-tos",
+      "Liable for service across the ICT window",
+      fired ? "block" : "pass",
+      !currentLiable
         ? `Blocked — current TOS "${tos.current}" is not ICT-liable`
         : overlappingFuture
-          ? `Needs check — future-dated TOS "${overlappingFuture.tosCode}" (${overlappingFuture.startDate}→${overlappingFuture.endDate}) overlaps the ICT`
+          ? `Blocked — future-dated TOS "${overlappingFuture.tosCode}" (${overlappingFuture.startDate}→${overlappingFuture.endDate}) is effective across the ICT window`
           : `Liable — current TOS "${tos.current}"`,
-      inputs: [inputFrom("typeOfService", n.typeOfService, tos.current)],
-    });
-    if (!decided && fired) {
-      if (!currentLiable) {
-        state = {
-          status: "Blocked",
-          reason: "TOS — non-liable",
-          detail: `Current TOS ${tos.current}`,
-        };
-      } else {
-        state = {
-          status: "NeedsCheck",
-          reason: `Future-dated TOS ${overlappingFuture!.tosCode} overlaps the ICT window`,
-        };
-      }
-      decidedBy = "R-tos";
-      decided = true;
-    }
+      [inputFrom("typeOfService", n.typeOfService, tos.current)],
+      fired
+        ? {
+            status: "Blocked",
+            reason: "TOS — non-liable",
+            detail: !currentLiable
+              ? `Current TOS ${tos.current}`
+              : `Future-dated TOS ${overlappingFuture!.tosCode}`,
+          }
+        : undefined,
+    );
   }
 
-  // Rule Overseas — active exit permit / border-out spanning the ICT.
+  // 4 — Tenure (min service before ICT) → Blocked. The "~6-month" threshold is
+  // UNVERIFIED (KB); the block is honest about that in its detail/trace.
+  {
+    const t = n.tenure.value;
+    const fired = !t.minServiceMet;
+    push(
+      "R-tenure",
+      "Meets minimum service before the ICT",
+      fired ? "block" : "pass",
+      fired
+        ? `Blocked — minimum service before ICT not met (${t.ornsYears} ORNS yr, ${t.hkClocked} HK); the ~${MIN_SERVICE_MONTHS_UNVERIFIED}-month threshold is unverified — confirm`
+        : `Liable — ${t.ornsYears} ORNS year(s), ${t.hkClocked} HK pts, MUT ${t.mut}`,
+      [inputFrom("tenure", n.tenure, `${t.ornsYears} ORNS yr, ${t.hkClocked} HK, MUT ${t.mut}`)],
+      fired
+        ? {
+            status: "Blocked",
+            reason: "Tenure — min service not met",
+            detail: `~${MIN_SERVICE_MONTHS_UNVERIFIED}-month threshold unverified`,
+          }
+        : undefined,
+    );
+  }
+
+  // 5 — Deferment → Blocked.
+  {
+    const fired = n.defermentStatus.value === "Approved";
+    push(
+      "R2-deferment",
+      "No approved deferment",
+      fired ? "block" : "pass",
+      fired
+        ? "Blocked — deferment approved for this ORNS cycle"
+        : `Deferment status: ${n.defermentStatus.value}`,
+      [inputFrom("defermentStatus", n.defermentStatus)],
+      fired
+        ? { status: "Blocked", reason: "Deferment", detail: "Approved deferment on record" }
+        : undefined,
+    );
+  }
+
+  // 6 — Overseas / exit permit → Blocked.
   {
     const th = n.travelHistory.value;
     const permit = th.exitPermits.find((p) => overlapsICT(p.start, p.end, window));
     const fired = !!permit;
-    trace.push({
-      id: "R-overseas",
-      label: "Not overseas across the ICT window",
-      result: decided ? "skipped" : fired ? "block" : "pass",
-      detail: fired
+    push(
+      "R-overseas",
+      "Not overseas across the ICT window",
+      fired ? "block" : "pass",
+      fired
         ? `Blocked — exit permit ${permit!.start}→${permit!.end} spans the ICT window`
         : "No exit permit overlapping the ICT window",
-      inputs: [
+      [
         inputFrom(
           "travelHistory",
           n.travelHistory,
           fired ? `exit permit ${permit!.start}→${permit!.end}` : `${th.exitPermits.length} exit permit(s)`,
         ),
       ],
-    });
-    if (!decided && fired) {
-      state = {
-        status: "Blocked",
-        reason: "Overseas — exit permit",
-        detail: `Exit permit ${permit!.start}→${permit!.end}`,
-      };
-      decidedBy = "R-overseas";
-      decided = true;
-    }
+      fired
+        ? {
+            status: "Blocked",
+            reason: "Overseas — exit permit",
+            detail: `Exit permit ${permit!.start}→${permit!.end}`,
+          }
+        : undefined,
+    );
   }
 
-  // Rule 1 — PES meets role requirement
-  const pesOk = req ? pesRank(n.pes.value) <= pesRank(req.minPES) : true;
+  // 7 — IHL (in-house learning / studies, incl. overseas study) → Blocked. gap feed.
   {
-    const fired = !pesOk;
-    trace.push({
-      id: "R1-pes",
-      label: "PES meets role requirement",
-      result: fired ? "block" : "pass",
-      detail: req
-        ? fired
-          ? `Blocked — PES ${n.pes.value} below ${n.vocation.value} requirement ${req.minPES}`
-          : `PES ${n.pes.value} meets ${n.vocation.value} requirement ${req.minPES}`
-        : `No PES requirement mapped for ${n.vocation.value}`,
-      inputs: [inputFrom("pes", n.pes), inputFrom("vocation", n.vocation)],
-    });
-    if (!decided && fired) {
-      state = {
-        status: "Blocked",
-        reason: "Down-PES / medical",
-        detail: `PES ${n.pes.value} below role requirement ${req?.minPES}`,
-      };
-      decidedBy = "R1-pes";
-      decided = true;
-    }
+    const ihl = n.ihl.value;
+    const fired = ihl.studying;
+    push(
+      "R-ihl",
+      "Not on study non-availability (IHL)",
+      fired ? "block" : "pass",
+      fired
+        ? `Blocked — ${ihl.overseas ? "overseas study" : "IHL / studying"}${ihl.institution ? ` (${ihl.institution})` : ""}`
+        : "Not studying",
+      [inputFrom("ihl", n.ihl, fired ? `studying${ihl.overseas ? " (overseas)" : ""}` : "not studying")],
+      fired
+        ? {
+            status: "Blocked",
+            reason: "IHL / studying",
+            detail: ihl.overseas ? "Overseas study" : ihl.institution,
+          }
+        : undefined,
+    );
   }
 
-  // Rule 2 — Deferment (approved deferment blocks)
-  {
-    const fired = n.defermentStatus.value === "Approved";
-    trace.push({
-      id: "R2-deferment",
-      label: "No approved deferment",
-      result: decided ? "skipped" : fired ? "block" : "pass",
-      detail: fired
-        ? "Blocked — deferment approved for this ORNS cycle"
-        : `Deferment status: ${n.defermentStatus.value}`,
-      inputs: [inputFrom("defermentStatus", n.defermentStatus)],
-    });
-    if (!decided && fired) {
-      state = { status: "Blocked", reason: "Deferment", detail: "Approved deferment on record" };
-      decidedBy = "R2-deferment";
-      decided = true;
-    }
-  }
-
-  // Rule 3 — Availability (IHL / disruption / overseas / <6-month)
-  {
-    const av = n.availability.value;
-    const fired = av !== "Available";
-    trace.push({
-      id: "R3-availability",
-      label: "Available for the ICT window",
-      result: decided ? "skipped" : fired ? "block" : "pass",
-      detail: fired ? `Blocked — ${av}` : "Available",
-      inputs: [inputFrom("availability", n.availability)],
-    });
-    if (!decided && fired) {
-      // av is one of the availability BlockReason members when not "Available".
-      state = { status: "Blocked", reason: av as BlockReason, detail: av };
-      decidedBy = "R3-availability";
-      decided = true;
-    }
-  }
-
-  // Rule 4 — Licence hard-required for role (Driver): expired → Blocked
+  // 8 — Licence hard-required for the role (Driver) → Blocked (gates the slot).
   {
     const hardLicence = !!req?.requiresLicence;
     const fired = hardLicence && n.licence.value === "Expired";
-    trace.push({
-      id: "R4-licence",
-      label: "Licence valid where role-required",
-      result: decided ? "skipped" : !hardLicence ? "pass" : fired ? "block" : "pass",
-      detail: !hardLicence
+    push(
+      "R4-licence",
+      "Licence valid where role-required",
+      fired ? "block" : "pass",
+      !hardLicence
         ? `Licence not hard-required for ${n.vocation.value}`
         : fired
           ? `Blocked — ${n.vocation.value} requires a valid licence; on record: Expired`
           : `Licence ${n.licence.value} valid for ${n.vocation.value}`,
-      inputs: [inputFrom("licence", n.licence), inputFrom("vocation", n.vocation)],
-    });
-    if (!decided && fired) {
-      state = {
-        status: "Blocked",
-        reason: "Clearance / licence expired",
-        detail: `${n.vocation.value} licence expired (hard-required)`,
-      };
-      decidedBy = "R4-licence";
-      decided = true;
-    }
+      [inputFrom("licence", n.licence), inputFrom("vocation", n.vocation)],
+      fired
+        ? {
+            status: "Blocked",
+            reason: "Clearance / licence expired",
+            detail: `${n.vocation.value} licence expired (hard-required)`,
+          }
+        : undefined,
+    );
   }
 
-  // Rule Offences — open disciplinary state / AWOL → NeedsCheck (route to human)
-  {
-    const off = n.offences.value;
-    const openCount = off.current.filter((o) => o.status === "open").length;
-    const fired = openCount > 0 || off.awol;
-    trace.push({
-      id: "R-offences",
-      label: "No open disciplinary state",
-      result: decided ? "skipped" : fired ? "needs-check" : "pass",
-      detail: fired
-        ? `Needs check — ${off.awol ? "AWOL on parade-state history" : `${openCount} open offence(s)`}; route to human`
-        : "No open offence / AWOL",
-      inputs: [
-        inputFrom(
-          "offences",
-          n.offences,
-          `${openCount} open, ${off.past.length} past${off.awol ? ", AWOL" : ""}`,
-        ),
-      ],
-    });
-    if (!decided && fired) {
-      state = {
-        status: "NeedsCheck",
-        reason: off.awol ? "AWOL on record — verify with unit" : "Open disciplinary state — verify",
-      };
-      decidedBy = "R-offences";
-      decided = true;
-    }
-  }
-
-  // Rule 5 — Clearance / licence currency (soft) → NeedsCheck
+  // 9 — G50 clearance → NeedsCheck (expired / pending), or a soft (non-role)
+  // licence expiry → NeedsCheck.
   {
     const clr = n.clearanceG50.value;
     const softLicenceExpired = !req?.requiresLicence && n.licence.value === "Expired";
@@ -305,70 +312,136 @@ export function resolveEligibility(n: NSmanSource, window: IctWindow): Eligibili
         : clr === "Pending"
           ? "clearance (G50) pending renewal"
           : "licence expired";
-    trace.push({
-      id: "R5-clearance",
-      label: "Clearance / licence current",
-      result: decided ? "skipped" : fired ? "needs-check" : "pass",
-      detail: fired ? `Needs check — ${which}, renewal pending` : "Clearance current",
-      inputs: [inputFrom("clearanceG50", n.clearanceG50), inputFrom("licence", n.licence)],
-    });
-    if (!decided && fired) {
-      state = { status: "NeedsCheck", reason: `${which} — awaiting renewal` };
-      decidedBy = "R5-clearance";
-      decided = true;
-    }
-  }
-
-  // Rule Medical/IPPT — currency read from the richer records → NeedsCheck
-  {
-    const ip = n.ippt.value;
-    const activeExcuse = n.medicalHistory.value.some((m) =>
-      overlapsICT(m.date, m.date, window),
+    push(
+      "R5-clearance",
+      "Clearance / licence current",
+      fired ? "needs-check" : "pass",
+      fired ? `Needs check — ${which}, renewal pending` : "Clearance current",
+      [inputFrom("clearanceG50", n.clearanceG50), inputFrom("licence", n.licence)],
+      fired ? { status: "NeedsCheck", reason: `${which} — awaiting renewal` } : undefined,
     );
-    const ipptStale = ip.currentWindow === "Fail";
-    const fired = ipptStale || activeExcuse || ip.stationExcuses.length > 0;
-    const why = ipptStale
-      ? `IPPT ${ip.currentWindow} this window`
-      : ip.stationExcuses.length > 0
-        ? `station excuse(s): ${ip.stationExcuses.join(", ")}`
-        : "active medical excuse over the ICT window";
-    trace.push({
-      id: "R-medical",
-      label: "Medical / IPPT currency",
-      result: decided ? "skipped" : fired ? "needs-check" : "pass",
-      detail: fired ? `Needs check — ${why}` : "IPPT current, no active medical excuse",
-      inputs: [
-        inputFrom("ippt", n.ippt, `current ${ip.currentWindow}`),
-        inputFrom("medicalHistory", n.medicalHistory, `${n.medicalHistory.value.length} entry(ies)`),
-      ],
-    });
-    if (!decided && fired) {
-      state = { status: "NeedsCheck", reason: why };
-      decidedBy = "R-medical";
-      decided = true;
-    }
   }
 
-  // Rule 6 — Critical field unresolved (missing/conflicted PES or clearance) → NeedsCheck
+  // 10 — Offences / AWOL → NeedsCheck (route to a human).
+  {
+    const off = n.offences.value;
+    const openCount = off.current.filter((o) => o.status === "open").length;
+    const fired = openCount > 0 || off.awol;
+    push(
+      "R-offences",
+      "No open disciplinary state",
+      fired ? "needs-check" : "pass",
+      fired
+        ? `Needs check — ${off.awol ? "AWOL on parade-state history" : `${openCount} open offence(s)`}; route to human`
+        : "No open offence / AWOL",
+      [
+        inputFrom(
+          "offences",
+          n.offences,
+          `${openCount} open, ${off.past.length} past${off.awol ? ", AWOL" : ""}`,
+        ),
+      ],
+      fired
+        ? {
+            status: "NeedsCheck",
+            reason: off.awol ? "AWOL on record — verify with unit" : "Open disciplinary state — verify",
+          }
+        : undefined,
+    );
+  }
+
+  // 11 — Call-up NR validity → NeedsCheck. A phase date long before the window,
+  // or an NR not reviewed against it, is a stale-validity case (KB: a stale
+  // blocking-relevant field resolves to NeedsCheck rather than a silent pass).
+  {
+    const nr = n.callUpNR.value;
+    const phaseStale = daysBetween(window.startDate, nr.phaseDate) > 90; // cut well before the window
+    const reviewStale = isStale("callUpNR", n.callUpNR);
+    const fired = phaseStale || reviewStale;
+    push(
+      "R-nr",
+      "Call-up NR valid for this window",
+      fired ? "needs-check" : "pass",
+      fired
+        ? `Needs check — ${phaseStale ? `phase date ${nr.phaseDate} predates the ICT window` : `NR last reviewed ${nr.dateReviewed}, not against the current window`}`
+        : `NR phase date ${nr.phaseDate}, reviewed ${nr.dateReviewed}`,
+      [inputFrom("callUpNR", n.callUpNR, `phase ${nr.phaseDate}, reviewed ${nr.dateReviewed}`)],
+      fired
+        ? {
+            status: "NeedsCheck",
+            reason: phaseStale
+              ? "Call-up NR phase date predates the ICT window — re-validate"
+              : "Call-up NR not reviewed against the current window",
+          }
+        : undefined,
+    );
+  }
+
+  // 12 — Medical / MC → Blocked (excused). An MC covering the ICT dates excuses
+  // the man from the activity. NOTE: IPPT is deliberately NOT read here — it is
+  // a READINESS signal and never gates eligibility (KB design rule).
+  {
+    const mc = n.medicalHistory.value.find(
+      (m) => m.excuseType === "MC" && overlapsICT(m.date, m.date, window),
+    );
+    const fired = !!mc;
+    push(
+      "R-medical",
+      "No MC excusing the ICT window",
+      fired ? "block" : "pass",
+      fired
+        ? `Blocked (excused) — MC "${mc!.excuse}" (${mc!.duration}, ${mc!.date}) covers the ICT window`
+        : "No MC covering the ICT window",
+      [
+        inputFrom(
+          "medicalHistory",
+          n.medicalHistory,
+          fired ? `MC ${mc!.date} (${mc!.duration})` : `${n.medicalHistory.value.length} entry(ies)`,
+        ),
+      ],
+      fired
+        ? { status: "Blocked", reason: "Medical excusal (MC)", detail: "MC covers the ICT window" }
+        : undefined,
+    );
+  }
+
+  // 13 — Disruption / newborn / WOG → CANNOT EVALUATE. This data is captured
+  // nowhere today (hole), so no rule can honestly fire on it. The row is shown
+  // for transparency but never sets Blocked / NeedsCheck.
+  {
+    const dis = n.disruption.value;
+    push(
+      "R-disruption",
+      "Disruption / newborn (WOG) — not a gate",
+      dis.active ? "cannot-evaluate" : "pass",
+      dis.active
+        ? `Cannot evaluate — ${dis.reason ?? "disruption"} is shown in the prototype but not captured in any system today (hole); no rule can fire on it`
+        : "No disruption on record (and not reliably captured in any system today)",
+      [inputFrom("disruption", n.disruption, dis.active ? (dis.reason ?? "active") : "none")],
+      undefined, // never gates — a hole cannot set eligibility state
+    );
+  }
+
+  // 14 — Unresolved critical-field source conflict → NeedsCheck (KB: sources
+  // conflict on a blocking-relevant field ⇒ NeedsCheck).
   {
     const conflicted = !!n.pes.conflict || !!n.clearanceG50.conflict;
-    const fired = conflicted;
-    trace.push({
-      id: "R6-critical",
-      label: "No unresolved critical-field conflict",
-      result: decided ? "skipped" : fired ? "needs-check" : "pass",
-      detail: fired
+    push(
+      "R6-critical",
+      "No unresolved critical-field conflict",
+      conflicted ? "needs-check" : "pass",
+      conflicted
         ? "Needs check — a critical field (PES / clearance) has an unresolved source conflict"
         : "Critical fields resolved",
-      inputs: [inputFrom("pes", n.pes), inputFrom("clearanceG50", n.clearanceG50)],
-    });
-    if (!decided && fired) {
-      state = { status: "NeedsCheck", reason: "Unresolved critical-field conflict" };
-      decidedBy = "R6-critical";
-      decided = true;
-    }
+      [inputFrom("pes", n.pes), inputFrom("clearanceG50", n.clearanceG50)],
+      conflicted ? { status: "NeedsCheck", reason: "Unresolved critical-field conflict" } : undefined,
+    );
   }
 
+  // Blocks win over NeedsCheck regardless of order (KB: first blocking rule
+  // sets the state); NeedsCheck applies only when no block fired.
+  const state: EligibilityResult["state"] = blockState ?? needsState ?? { status: "Eligible" };
+  const decidedBy = blockState ? blockBy : needsState ? needsBy : undefined;
   return { state, decidedBy, trace };
 }
 

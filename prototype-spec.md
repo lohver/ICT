@@ -45,10 +45,18 @@ surfaces in each field's click-through popover — no inline pills.
 
 **Eligibility vs readiness follows the KB Determines column.** The drill-down separates them at
 the top level: the **Eligibility** tab carries the call-up gates (Call-Up Deviation, TOS,
-Exit-permit/Travel, Offences/AWOL, plus PES, role/appointment, availability, deferment, IHL, G50,
-licence); the **Readiness** tab carries the currency signals (IPPT, SAR-21, ATMS flags, MUT/
-refresher) plus the *both*-tagged Medical and Attendance. Readiness informs selection and never
+Exit-permit/Travel, Offences/AWOL, Tenure/liability, Call-up NR validity, plus PES,
+role/appointment, deferment, IHL, Disruption/newborn, G50, licence); the **Readiness** tab carries
+the currency signals (IPPT, SAR-21, ATMS flags, MUT/refresher). The *both*-tagged Medical and
+Attendance appear in full on the Readiness tab and are mirrored (eligibility slice — MC excusal /
+AWOL & disciplinary exceptions) on the Eligibility tab. Readiness informs selection and never
 hard-gates eligibility (KB "Design consequence — binding").
+
+**No single "availability" feed.** The KB has no "availability" dataset; that convenience previously
+conflated three distinct datasets with different provenance. It is decomposed into `ihl`
+(**gap**, incl. overseas study), `disruption` (**hole** — newborn/WOG, captured nowhere today), and
+`tenure` (**confirmed** — the min-service/"6-month" gate, threshold unverified). The drill-down still
+shows a derived at-a-glance "Availability" label, computed from these.
 
 ## OASIS ICT-Management data sets (new fields)
 
@@ -58,6 +66,9 @@ All `confirmed` (OASIS ICT-Management v1.1) unless noted. Concrete value sets ar
 |-------|-------|-------|
 | `callUpDeviation` | `Field<{reasonCode, reasonLabel, illustrative}[]>` | Block mechanism. Non-empty ⇒ Blocked; reason surfaced verbatim. Reasons illustrative (`CALL_UP_DEVIATION_REASONS`). |
 | `typeOfService` | `Field<{current: TOSCode, futureDated: {tosCode,startDate,endDate}[]}>` | TOS codes illustrative (`TOS_CODES`); only `ORNS-liable` is ICT-liable. |
+| `callUpNR` | `Field<{phaseDate, dateReviewed}>` | Call-up Nominal-Roll validity (`confirmed`). Phase date long before the window or a stale review ⇒ NeedsCheck. |
+| `tenure` | `Field<{ornsYears, hkClocked, mut, minServiceMet}>` | Min service before ICT (`confirmed`); a shortfall ⇒ **Blocked** (KB rules table). The "~6-month" threshold is **unverified** — the block's trace detail says so. |
+| `disruption` | `Field<{active, reason?}>` | Disruption / newborn / other WOG reason. **`hole`** — captured nowhere today. The engine emits a **cannot-evaluate** trace row and **never gates** on it. |
 | `offences` | `Field<{current[], past[], awol}>` | `offenceType` illustrative; `awol` derived from attendance history. |
 | `travelHistory` | `Field<{exitPermits[], borderMovements[]}>` | Source **OneOASIS Travel History** (`confirmed`). |
 | `ippt` | `Field<{eligibilityCriteria, nsFit, hsp, iptRt, stationExcuses, currentWindow, pastWindow}>` | Expanded IPPT record. |
@@ -73,19 +84,25 @@ All `confirmed` (OASIS ICT-Management v1.1) unless noted. Concrete value sets ar
 reason-trace entry (rule id, label, result, detail, inputs with source/asOf/provenance).
 The advisory layer stays advisory (anomaly flag only) and never gates eligibility.
 
-Order (first match wins):
+Order + outcomes mirror the KB rules table. **Every rule is evaluated** (the trace is complete);
+the **outcome** is then the first `Blocked` by order, else the first `NeedsCheck`, else `Eligible`
+— i.e. **blocks win over NeedsCheck** regardless of order (KB: "the first blocking rule sets the
+state"). Readiness signals (IPPT, SAR-21, ATMS, MUT) are **not read here** — they never gate.
 
 1. `R0-deviation` — any `callUpDeviation` ⇒ **Blocked** (deviation label surfaced verbatim).
-2. `R-tos` — current TOS not ICT-liable ⇒ **Blocked (TOS)**; future-dated TOS overlapping the ICT window ⇒ **NeedsCheck**.
-3. `R-overseas` — exit permit overlapping the ICT window ⇒ **Blocked (Overseas)**.
-4. `R1-pes` — PES below role requirement ⇒ Blocked.
-5. `R2-deferment` — approved deferment ⇒ Blocked.
-6. `R3-availability` — IHL / disruption / overseas-study / <6-month ⇒ Blocked.
-7. `R4-licence` — role-required licence expired (Driver) ⇒ Blocked.
-8. `R-offences` — open offence or AWOL ⇒ **NeedsCheck** (route to human).
-9. `R5-clearance` — G50 pending/expired or soft-licence expired ⇒ NeedsCheck.
-10. `R-medical` — IPPT `Fail`, a station excuse, or a medical excuse overlapping the ICT window ⇒ NeedsCheck.
-11. `R6-critical` — unresolved critical-field source conflict ⇒ NeedsCheck.
+2. `R1-pes` — PES below role requirement ⇒ **Blocked**.
+3. `R-tos` — current TOS not ICT-liable, or a future-dated TOS effective across the window ⇒ **Blocked**.
+4. `R-tenure` — minimum service before ICT not met ⇒ **Blocked** (the "~6-month" threshold is *unverified*; the block says so in its trace detail).
+5. `R2-deferment` — approved deferment ⇒ **Blocked**.
+6. `R-overseas` — exit permit overlapping the ICT window ⇒ **Blocked**.
+7. `R-ihl` — on study non-availability (IHL / overseas study) ⇒ **Blocked**. *(gap feed)*
+8. `R4-licence` — role-required licence expired (Driver) ⇒ **Blocked** (gates the licensed slot).
+9. `R5-clearance` — G50 pending/expired or soft (non-role) licence expired ⇒ **NeedsCheck**.
+10. `R-offences` — open offence or AWOL ⇒ **NeedsCheck** (route to human).
+11. `R-nr` — call-up NR phase date predates the window, or NR not reviewed against it ⇒ **NeedsCheck**.
+12. `R-medical` — an **MC** covering the ICT window ⇒ **Blocked (excused)**. *(IPPT is readiness — never read here.)*
+13. `R-disruption` — disruption / newborn / WOG ⇒ **cannot-evaluate** — a **hole** (captured nowhere today); shown for transparency but **never gates**.
+14. `R6-critical` — unresolved critical-field source conflict ⇒ **NeedsCheck**.
 
 ## ICT activity window (first-class input)
 
@@ -119,9 +136,10 @@ field per Call-Up Deviation (or one synthesized from the block reason), then a m
 - **Nominal roll** — eligibility chip (`Eligible / Blocked(reason) / NeedsCheck`) using the
   Call-Up Deviation / rule reason as the blocked label; attachment flag (attached-in / organic /
   detached-out); G50/SAR chips shown dashed (`gap`). Provenance legend visible on the screen.
-- **Drill-down tabs** — Summary, Eligibility (reason trace), plus OASIS-mirrored, confirmed-sourced
-  tabs: Medical, IPPT, Offences, Travel History, TOS (incl. future-dated), Attendance; Readiness
-  (per-field provenance + legend).
+- **Drill-down tabs** — Summary, Eligibility (reason trace, plus OASIS-mirrored cards: TOS incl.
+  future-dated, Travel History, Offences, Tenure/liability, Call-up NR validity, and the *both*-tagged
+  Medical/Attendance eligibility slices), Readiness (IPPT, Medical history, Attendance, per-field
+  provenance + legend).
 
 ## §7 Synthetic data
 

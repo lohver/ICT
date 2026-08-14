@@ -44,7 +44,7 @@ export const UNIT_NAME = "3 SIR (NS)";
  *  domains carry a longer currency window. Spec §6 field-level currency. */
 export const FRESHNESS_DAYS: Record<string, number> = {
   // volatile
-  availability: 7,
+  disruption: 7,
   defermentStatus: 7,
   medical: 7,
   ipptStatus: 30,
@@ -60,6 +60,8 @@ export const FRESHNESS_DAYS: Record<string, number> = {
   // OASIS ICT-Management sets
   callUpDeviation: 30,
   typeOfService: 90,
+  callUpNR: 120,
+  tenure: 180,
   offences: 30,
   travelHistory: 14,
   ippt: 30,
@@ -80,7 +82,6 @@ export const FIELD_LABELS: Record<string, string> = {
   vocation: "Vocation",
   pes: "PES",
   appointmentHeld: "Appointment held",
-  availability: "Availability status",
   ipptStatus: "IPPT",
   medical: "Medical",
   defermentStatus: "Deferment",
@@ -88,9 +89,12 @@ export const FIELD_LABELS: Record<string, string> = {
   clearanceG50: "Clearance (G50)",
   licence: "Licence",
   atmsTrainingReqMet: "ATMS training req",
+  disruption: "Disruption / newborn (WOG)",
+  tenure: "Tenure / liability",
   // OASIS ICT-Management sets
   callUpDeviation: "Call-Up Deviation",
   typeOfService: "Type of Service (TOS)",
+  callUpNR: "Call-up NR validity",
   offences: "Offences",
   travelHistory: "Travel History",
   ippt: "IPPT (detail)",
@@ -108,12 +112,13 @@ export const FIELD_PROVENANCE: Record<string, import("./types").Provenance> = {
   vocation: "confirmed",
   pes: "confirmed",
   appointmentHeld: "confirmed",
-  availability: "confirmed",
   ipptStatus: "confirmed",
   medical: "confirmed",
   defermentStatus: "confirmed",
   callUpDeviation: "confirmed",
   typeOfService: "confirmed",
+  callUpNR: "confirmed",
+  tenure: "confirmed",
   offences: "confirmed",
   travelHistory: "confirmed",
   ippt: "confirmed",
@@ -127,6 +132,8 @@ export const FIELD_PROVENANCE: Record<string, import("./types").Provenance> = {
   clearanceG50: "gap",
   licence: "gap",
   atmsTrainingReqMet: "gap",
+  // hole — not reliably captured in any system today (data-creation gap)
+  disruption: "hole",
 };
 
 /** Source (feed) per field. Honest labels — some are not clean feeds. */
@@ -134,12 +141,13 @@ export const FIELD_SOURCES: Record<string, import("./types").SourceSystem> = {
   vocation: "eHR",
   pes: "eHR", // system-of-record eHR/OneOASIS; surfaced (not sourced) in Comd WB @ INET
   appointmentHeld: "eHR",
-  availability: "OneOASIS",
   ipptStatus: "OneOASIS",
   medical: "CommWB",
   defermentStatus: "myDeferment/CICM",
   callUpDeviation: "OneOASIS",
   typeOfService: "OneOASIS",
+  callUpNR: "OneOASIS", // OASIS Nominal Roll @ OSN
+  tenure: "eHR", // eHR / OneOASIS org data
   offences: "OneOASIS",
   travelHistory: "OneOASIS",
   ippt: "OneOASIS",
@@ -148,16 +156,26 @@ export const FIELD_SOURCES: Record<string, import("./types").SourceSystem> = {
   trainingStatus: "OneOASIS",
   attachment: "OneOASIS",
   ihl: "Manual YoT CSV",
+  disruption: "Unidentified", // captured nowhere today — no owning system (hole)
   sar21Currency: "ATMS",
   clearanceG50: "Unidentified",
   licence: "Unidentified", // source system not stated in the corpus (per KB mapping)
   atmsTrainingReqMet: "ATMS",
 };
 
-/** Shown on every gap/hole field so mocked data is never mistaken for a feed. */
+/** Shown on every gap field so mocked data is never mistaken for a feed. */
 export const ASPIRATIONAL_NOTE =
   "Aspirational — not a live feed; not from OneOASIS.";
+/** Shown on hole fields — the data is not captured anywhere today. */
+export const HOLE_NOTE =
+  "Not captured in any system today — a data-creation gap, not just integration.";
 export const ILLUSTRATIVE_NOTE = "Illustrative — not authoritative.";
+
+/** Minimum service before an ICT (the "6-month" rule). UNVERIFIED per the KB
+ *  "Eligibility data-source mapping" — the threshold's existence is asserted
+ *  but its exact value is not confirmed, so the engine routes a shortfall to
+ *  NeedsCheck (human confirmation) rather than a hard Block. */
+export const MIN_SERVICE_MONTHS_UNVERIFIED = 6;
 
 /** Default ICT window the roll is built against (illustrative dates).
  *  This only SEEDS the runtime window in the store; the engine evaluates

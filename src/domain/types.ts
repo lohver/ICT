@@ -156,11 +156,42 @@ export interface Attachment {
   receivingUnit: string;
 }
 
-/** Study non-availability (IHL). provenance gap — manual CSV batch. */
+/** Study non-availability (IHL). provenance gap — manual CSV batch.
+ *  Covers both local in-house learning and overseas study. */
 export interface IHL {
   studying: boolean;
+  overseas?: boolean;
   institution?: string;
   expectedEnd?: string;
+}
+
+/** Disruption / newborn / other WOG non-availability.
+ *  provenance HOLE — "not highlighted in system as no logic is designed";
+ *  captured nowhere today, so this is a data-CREATION gap, not integration. */
+export type DisruptionReason = "Disruption" | "Newborn" | "Other WOG reason";
+export interface Disruption {
+  active: boolean;
+  reason?: DisruptionReason;
+  illustrative: true;
+}
+
+/** Call-up Nominal-Roll validity fields (OASIS NR). A recorded phase date
+ *  materially older than the ICT window, or an NR not reviewed against the
+ *  current window, needs a human check before the roll is trusted. */
+export interface CallUpNR {
+  phaseDate: string; // ISO date the call-up NR was cut for
+  dateReviewed: string; // ISO date the NR was last reviewed
+}
+
+/** Tenure / service-liability. ORNS years, HK points clocked and MUT count
+ *  are grounded ORNS concepts; `minServiceMet` is the derived gate. The exact
+ *  minimum-service threshold (the "6-month" rule) is UNVERIFIED (see KB), so
+ *  the engine routes a shortfall to NeedsCheck rather than a hard Block. */
+export interface Tenure {
+  ornsYears: number;
+  hkClocked: number;
+  mut: number;
+  minServiceMet: boolean;
 }
 
 // ------------------------------------------------------------
@@ -169,11 +200,9 @@ export interface IHL {
 // ------------------------------------------------------------
 export type BlockReason =
   | "IHL / studying"
-  | "Disruption"
-  | "Overseas study"
+  | "Disruption / newborn (WOG)"
   | "Overseas — exit permit"
   | "Down-PES / medical"
-  | "Call-up < 6 months before ICT"
   | "Clearance / licence expired"
   | "TOS — non-liable"
   | "Call-up deviation"
@@ -189,7 +218,9 @@ export type EligibilityState =
 // ------------------------------------------------------------
 // Explainability — the reason trace the engine returns per NSman.
 // ------------------------------------------------------------
-export type RuleResult = "pass" | "block" | "needs-check" | "skipped";
+/** "cannot-evaluate" — the dataset is a HOLE (captured nowhere today), so the
+ *  engine deliberately refuses to gate on it; the row is informational only. */
+export type RuleResult = "pass" | "block" | "needs-check" | "skipped" | "cannot-evaluate";
 
 export interface RuleInput {
   label: string;
@@ -243,13 +274,6 @@ export interface NSmanSource {
   vocation: Field<string>;
   pes: Field<string>; // PES → Comd WB / eHR (NOT OASIS-ICT)
   appointmentHeld: Field<string>;
-  availability: Field<
-    | "Available"
-    | "IHL / studying"
-    | "Disruption"
-    | "Overseas study"
-    | "Call-up < 6 months before ICT"
-  >;
   // readiness [confirmed]
   ipptStatus: Field<"Pass" | "Fail" | "Not Attempted" | "FIT (Non-Mandatory)">; // roll-chip summary
   medical: Field<string>; // summary status; full history in medicalHistory
@@ -258,6 +282,8 @@ export interface NSmanSource {
   // ---- OASIS ICT-Management data sets [confirmed unless noted] ----
   callUpDeviation: Field<CallUpDeviation[]>;
   typeOfService: Field<TypeOfService>;
+  callUpNR: Field<CallUpNR>; // NR phase date / date reviewed [confirmed]
+  tenure: Field<Tenure>; // ORNS/HK/MUT liability [confirmed; 6-mo threshold unverified]
   offences: Field<OffenceRecord>;
   travelHistory: Field<TravelHistory>;
   ippt: Field<IpptDetail>;
@@ -265,7 +291,8 @@ export interface NSmanSource {
   attendance: Field<AttendanceRecord[]>;
   trainingStatus: Field<TrainingStatus>;
   attachment: Field<Attachment>;
-  ihl: Field<IHL>; // provenance gap — manual YoT CSV
+  ihl: Field<IHL>; // provenance gap — manual YoT CSV (incl. overseas study)
+  disruption: Field<Disruption>; // provenance hole — captured nowhere today
 
   // ---- gap domains — aspirational, not a live feed; not from OneOASIS ----
   sar21Currency: Field<"Current" | "Expiring" | "Expired">; // ATMS (marksmanship) — gap

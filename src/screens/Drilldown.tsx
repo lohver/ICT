@@ -149,6 +149,23 @@ export function Drilldown() {
   const th = n.travelHistory.value;
   const ip = n.ippt.value;
   const off = n.offences.value;
+  const ten = n.tenure.value;
+  const nr = n.callUpNR.value;
+  // Derived availability, decomposed back into a single at-a-glance label.
+  const availabilitySummary = n.ihl.value.studying
+    ? n.ihl.value.overseas
+      ? "Overseas study"
+      : "IHL / studying"
+    : n.disruption.value.active
+      ? (n.disruption.value.reason ?? "Disruption")
+      : !ten.minServiceMet
+        ? "Min service unconfirmed"
+        : "Available";
+  // Medical excuses / attendance exceptions that bear on ELIGIBILITY (both-tagged).
+  const medicalOverWindow = n.medicalHistory.value.filter((m) => overlapsICT(m.date, m.date));
+  const eligAttendance = n.attendance.value.filter((a) =>
+    ["AWOL", "NoPayLeave", "DeferredOutPro", "FailedInPro"].includes(a.outcome),
+  );
 
   return (
     <div className="flex flex-col gap-4">
@@ -244,7 +261,7 @@ export function Drilldown() {
               <KV k="Current TOS" v={tos.current} />
               <KV k="ORNS years" v={`${n.ornsYears} of 10`} />
               <KV k="HK clocked" v={`${n.hkClocked} pts`} />
-              <KV k="Availability" v={n.availability.value} />
+              <KV k="Availability" v={availabilitySummary} />
               <KV k="IPPT (window)" v={ip.currentWindow} />
               <KV k="Medical" v={n.medical.value} />
             </CardContent>
@@ -380,6 +397,100 @@ export function Drilldown() {
             </CardContent>
           </Card>
 
+          {/* Tenure / liability — confirmed; the 6-month threshold is unverified */}
+          <Card>
+            <OasisCardHeader title="Tenure / liability" source="eHR / OneOASIS org data" />
+            <CardContent className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <KV k="ORNS years" v={`${ten.ornsYears} of 10`} />
+                <KV k="HK clocked" v={`${ten.hkClocked} pts`} />
+                <KV k="MUT" v={ten.mut} />
+                <KV
+                  k="Min service"
+                  v={
+                    <Badge variant={ten.minServiceMet ? "success" : "warning"}>
+                      {ten.minServiceMet ? "Met" : "Unconfirmed"}
+                    </Badge>
+                  }
+                />
+              </div>
+              {!ten.minServiceMet && (
+                <Alert variant="warning">
+                  <ShieldAlert />
+                  <AlertTitle>Blocked — minimum service before ICT not met</AlertTitle>
+                  <AlertDescription>
+                    Per the eligibility data-source mapping this blocks the call-up. Note the exact
+                    ~6-month threshold is <span className="font-medium text-fg">unverified</span> — the
+                    reason trace flags it as needing confirmation.
+                  </AlertDescription>
+                </Alert>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Call-up NR validity */}
+          <Card>
+            <OasisCardHeader title="Call-up NR validity" source="OneOASIS Nominal Roll" />
+            <CardContent className="grid grid-cols-2 gap-4">
+              <KV k="Phase date" v={nr.phaseDate} />
+              <KV k="Date reviewed" v={nr.dateReviewed} />
+              <p className="col-span-2 text-xs text-fg-subtle">
+                ICT window: {ictWindow.startDate} → {ictWindow.endDate}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Both-tagged: Medical & Attendance — eligibility view (MC excusal / disciplinary) */}
+          <Card>
+            <OasisCardHeader
+              title="Medical — eligibility view"
+              note="Both eligibility & readiness"
+              source="OneOASIS Medical Records → Comd WB"
+            />
+            <CardContent className="py-0">
+              {medicalOverWindow.length === 0 ? (
+                <p className="py-3 text-sm text-fg-muted">
+                  No MC / medical excuse overlapping the ICT window. Full history in the Readiness tab.
+                </p>
+              ) : (
+                medicalOverWindow.map((m, i) => (
+                  <div key={i} className="border-b border-border py-2.5 last:border-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-fg">{m.excuse}</span>
+                      <Badge variant="warning">overlaps the ICT window</Badge>
+                    </div>
+                    <p className="text-xs text-fg-muted">{m.excuseType} · {m.duration} · {m.date}</p>
+                  </div>
+                ))
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <OasisCardHeader
+              title="Attendance — eligibility view"
+              note="Both eligibility & readiness"
+              source="OneOASIS Parade State Exceptions"
+            />
+            <CardContent className="py-0">
+              {eligAttendance.length === 0 ? (
+                <p className="py-3 text-sm text-fg-muted">
+                  No AWOL / disciplinary-relevant parade-state exceptions. Full history in the Readiness tab.
+                </p>
+              ) : (
+                eligAttendance.map((a, i) => (
+                  <div key={i} className="flex items-center justify-between border-b border-border py-2.5 last:border-0">
+                    <div>
+                      <p className="text-sm font-medium text-fg">{a.activityLabel}</p>
+                      <p className="text-xs text-fg-subtle">{a.date}</p>
+                    </div>
+                    <Badge variant={a.outcome === "AWOL" ? "danger" : "subtle"}>{OUTCOME_LABEL[a.outcome]}</Badge>
+                  </div>
+                ))
+              )}
+            </CardContent>
+          </Card>
+
           {/* Other eligibility determinants (per-field provenance) */}
           <Card>
             <CardHeader>
@@ -389,9 +500,23 @@ export function Drilldown() {
               <FieldRow fieldKey="pes" field={n.pes} />
               <FieldRow fieldKey="vocation" field={n.vocation} />
               <FieldRow fieldKey="appointmentHeld" field={n.appointmentHeld} />
-              <FieldRow fieldKey="availability" field={n.availability} />
               <FieldRow fieldKey="defermentStatus" field={n.defermentStatus} />
-              <FieldRow fieldKey="ihl" field={n.ihl} render={(v) => ((v as NSman["ihl"]["value"]).studying ? "Studying" : "Not studying")} />
+              <FieldRow
+                fieldKey="ihl"
+                field={n.ihl}
+                render={(v) => {
+                  const h = v as NSman["ihl"]["value"];
+                  return h.studying ? (h.overseas ? "Overseas study" : "Studying") : "Not studying";
+                }}
+              />
+              <FieldRow
+                fieldKey="disruption"
+                field={n.disruption}
+                render={(v) => {
+                  const d = v as NSman["disruption"]["value"];
+                  return d.active ? (d.reason ?? "Active") : "None";
+                }}
+              />
               <FieldRow fieldKey="clearanceG50" field={n.clearanceG50} />
               <FieldRow fieldKey="licence" field={n.licence} />
             </CardContent>
