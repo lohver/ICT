@@ -61,6 +61,34 @@ function stateSummary(s: EligibilityState): string {
   return `Needs check — ${s.reason}`;
 }
 
+/** Plain-language "what this block means" for a commander, keyed off the rule
+ *  that decided the block. Kept in one place so every block explains itself the
+ *  same way (incl. reasons that don't have their own card). */
+function blockExplanation(decidedBy?: string): string | null {
+  switch (decidedBy) {
+    case "R0-deviation":
+      return "He's flagged not to be called up for this cycle. Include him only by raising an unblock request with a justification.";
+    case "R1-pes":
+      return "His PES doesn't meet the fitness standard this vocation requires, so he can't fill the role as-is.";
+    case "R-tos":
+      return "His type of service isn't liable for this ICT across these dates, so he can't be called up.";
+    case "R-tenure":
+      return "He hasn't served the minimum period required before this ICT. The exact minimum (around 6 months) still needs to be confirmed against policy.";
+    case "R2-deferment":
+      return "He has an approved deferment covering this ICT, so he's excused from this cycle.";
+    case "R-overseas":
+      return "He'll be overseas on an exit permit during the ICT window, so he isn't available.";
+    case "R-ihl":
+      return "He's on approved studies (IHL) over this period, so he isn't available.";
+    case "R4-licence":
+      return "This role needs a valid licence and his has expired, so he can't be deployed in it until it's renewed.";
+    case "R-medical":
+      return "He has a medical certificate (MC) covering the ICT dates, so he's excused from this activity.";
+    default:
+      return null;
+  }
+}
+
 function KV({ k, v }: { k: string; v: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-0.5">
@@ -281,6 +309,12 @@ export function Drilldown() {
                       ? `Blocked — ${n.eligibility.reason}${n.eligibility.detail ? `: ${n.eligibility.detail}` : ""}`
                       : `Needs check — ${n.eligibility.reason}`}
                 </p>
+                {n.eligibility.status === "Blocked" &&
+                  blockExplanation(n.eligibilityTrace.decidedBy) && (
+                    <p className="mt-1.5 text-sm text-fg">
+                      {blockExplanation(n.eligibilityTrace.decidedBy)}
+                    </p>
+                  )}
                 <button
                   type="button"
                   onClick={() => setShowTrace((v) => !v)}
@@ -298,16 +332,6 @@ export function Drilldown() {
             )}
           </Card>
 
-          {blocked && (
-            <Alert variant="warning">
-              <ShieldAlert />
-              <AlertTitle>Call-Up Deviation — unblock is an approval-side action</AlertTitle>
-              <AlertDescription>
-                Selection is read-only. Raise an Unblock Servicemen request (justification per
-                deviation → route → decision) from the button above. Endpoints are mocked in v0.
-              </AlertDescription>
-            </Alert>
-          )}
 
           {/* Type of Service */}
           <Card>
@@ -414,17 +438,6 @@ export function Drilldown() {
                   }
                 />
               </div>
-              {!ten.minServiceMet && (
-                <Alert variant="warning">
-                  <ShieldAlert />
-                  <AlertTitle>Blocked — minimum service before ICT not met</AlertTitle>
-                  <AlertDescription>
-                    Per the eligibility data-source mapping this blocks the call-up. Note the exact
-                    ~6-month threshold is <span className="font-medium text-fg">unverified</span> — the
-                    reason trace flags it as needing confirmation.
-                  </AlertDescription>
-                </Alert>
-              )}
             </CardContent>
           </Card>
 
@@ -705,8 +718,8 @@ function UnblockDialog({ n }: { n: NSman }) {
         <DialogHeader>
           <DialogTitle>Unblock Servicemen request</DialogTitle>
           <DialogDescription>
-            {n.rank} {n.name} · one justification per Call-Up Deviation. Submit routes for approval
-            (mocked in v0 — no routing runs).
+            {n.rank} {n.name} · give a justification for each block reason below. On submit it goes
+            to the approving officer for a decision. (Prototype — nothing is actually submitted.)
           </DialogDescription>
         </DialogHeader>
 
@@ -715,8 +728,8 @@ function UnblockDialog({ n }: { n: NSman }) {
             <Check />
             <AlertTitle>Submitted for approval</AlertTitle>
             <AlertDescription>
-              {deviations.length} justification{deviations.length > 1 ? "s" : ""} routed to the
-              approving officer (mocked). The record stays Blocked until a decision returns.
+              {deviations.length} justification{deviations.length > 1 ? "s" : ""} sent to the
+              approving officer. He stays blocked until a decision comes back.
             </AlertDescription>
           </Alert>
         ) : (
@@ -732,7 +745,7 @@ function UnblockDialog({ n }: { n: NSman }) {
                   onChange={(e) =>
                     setTexts((prev) => prev.map((t, j) => (j === i ? e.target.value : t)))
                   }
-                  placeholder="Justification for this deviation…"
+                  placeholder="Justification for this block…"
                   rows={3}
                 />
               </div>
