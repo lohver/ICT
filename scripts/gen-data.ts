@@ -105,7 +105,9 @@ const APPOINTMENTS = [
   "Gun Detachment", "Mortar Line", "Driver / MT Line", "Company Clerk",
 ];
 
-const OTHER_UNITS = ["1 SIR", "2 SIR", "4 SIR", "5 SIR", "6 SIR"];
+// Neutral, clearly-illustrative peer units for cross-unit attach/detach —
+// NOT a real 6 Div ORBAT claim (letters, not designations).
+const OTHER_UNITS = ["Bn A", "Bn B", "Bn C", "Bn D"];
 
 function field<T>(key: string, value: T, asOf: string): Field<T> {
   return {

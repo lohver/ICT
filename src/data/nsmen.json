@@ -4,7 +4,7 @@
     "rank": "REC",
     "name": "Neo Ren Hao",
     "nric": "S****384H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -165,8 +165,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-03",
@@ -219,7 +219,7 @@
     "rank": "PTE",
     "name": "Arun s/o Devan",
     "nric": "S****718F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2025,
@@ -373,8 +373,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-18",
@@ -427,7 +427,7 @@
     "rank": "2LT",
     "name": "Syafiq bin Kamarul",
     "nric": "S****355J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -589,8 +589,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "6 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-23",
@@ -643,7 +643,7 @@
     "rank": "CPL",
     "name": "Naveen s/o Chandran",
     "nric": "S****361Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -826,8 +826,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-07",
@@ -880,7 +880,7 @@
     "rank": "PTE",
     "name": "Danial bin Ismail",
     "nric": "S****163E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -1042,8 +1042,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-04",
@@ -1096,7 +1096,7 @@
     "rank": "CPL",
     "name": "Low Chee Keong",
     "nric": "S****287H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -1258,8 +1258,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-20",
@@ -1312,7 +1312,7 @@
     "rank": "LCP",
     "name": "Harish s/o Ramesh",
     "nric": "S****427B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -1485,8 +1485,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-29",
@@ -1539,7 +1539,7 @@
     "rank": "3SG",
     "name": "Lee Yong Sheng",
     "nric": "S****684H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -1712,8 +1712,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-30",
@@ -1766,7 +1766,7 @@
     "rank": "CPT",
     "name": "Ho Jun Jie",
     "nric": "S****026C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -1926,8 +1926,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-19",
@@ -1980,7 +1980,7 @@
     "rank": "LCP",
     "name": "Rizwan bin Osman",
     "nric": "S****424D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -2149,8 +2149,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-09",
@@ -2203,7 +2203,7 @@
     "rank": "CFC",
     "name": "Chin Jia Hui",
     "nric": "S****276E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -2365,8 +2365,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-13",
@@ -2419,7 +2419,7 @@
     "rank": "1SG",
     "name": "Foo Wei Ming",
     "nric": "S****319I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -2589,8 +2589,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-10",
@@ -2643,7 +2643,7 @@
     "rank": "CPL",
     "name": "Ong Kok Wah",
     "nric": "S****588Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -2812,8 +2812,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-08",
@@ -2866,7 +2866,7 @@
     "rank": "REC",
     "name": "Naveen s/o Ramesh",
     "nric": "S****867B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2025,
@@ -3028,8 +3028,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-10",
@@ -3082,7 +3082,7 @@
     "rank": "REC",
     "name": "Arun s/o Ramesh",
     "nric": "S****920D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -3236,8 +3236,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-24",
@@ -3290,7 +3290,7 @@
     "rank": "LCP",
     "name": "Tan Zheng Yang",
     "nric": "S****231E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -3463,8 +3463,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-05",
@@ -3517,7 +3517,7 @@
     "rank": "PTE",
     "name": "Harish s/o Suppiah",
     "nric": "S****667D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -3671,8 +3671,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-04",
@@ -3725,7 +3725,7 @@
     "rank": "CPT",
     "name": "Chin Jia Le",
     "nric": "S****711C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -3887,8 +3887,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-08",
@@ -3941,7 +3941,7 @@
     "rank": "CPL",
     "name": "Seah Yong Sheng",
     "nric": "S****015H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -4102,8 +4102,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-13",
@@ -4156,7 +4156,7 @@
     "rank": "3SG",
     "name": "Ravi s/o Muthu",
     "nric": "S****383D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -4310,8 +4310,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-30",
@@ -4367,7 +4367,7 @@
     "rank": "LTA",
     "name": "Prakash s/o Nathan",
     "nric": "S****003C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -4521,8 +4521,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-28",
@@ -4575,7 +4575,7 @@
     "rank": "CPT",
     "name": "Koh Jun Jie",
     "nric": "S****032F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -4744,8 +4744,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-29",
@@ -4798,7 +4798,7 @@
     "rank": "LCP",
     "name": "Danial bin Yusof",
     "nric": "S****082I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -4963,8 +4963,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-29",
@@ -5017,7 +5017,7 @@
     "rank": "REC",
     "name": "Naveen s/o Suppiah",
     "nric": "S****430H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -5188,8 +5188,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-29",
@@ -5242,7 +5242,7 @@
     "rank": "PTE",
     "name": "Lim Kah Hui",
     "nric": "S****180D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -5403,8 +5403,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-15",
@@ -5457,7 +5457,7 @@
     "rank": "LCP",
     "name": "Faizal bin Yusof",
     "nric": "S****691C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -5611,8 +5611,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-30",
@@ -5665,7 +5665,7 @@
     "rank": "LCP",
     "name": "Ravi s/o Muthu",
     "nric": "S****472J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -5819,8 +5819,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-08-02",
@@ -5873,7 +5873,7 @@
     "rank": "CFC",
     "name": "Sim Kai Boon",
     "nric": "S****865D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -6042,8 +6042,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-11",
@@ -6096,7 +6096,7 @@
     "rank": "REC",
     "name": "Sim Yong Sheng",
     "nric": "S****834G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -6250,8 +6250,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-11",
@@ -6307,7 +6307,7 @@
     "rank": "1SG",
     "name": "Iskandar bin Salleh",
     "nric": "S****588C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -6469,8 +6469,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-26",
@@ -6523,7 +6523,7 @@
     "rank": "CPL",
     "name": "Quek Jun Jie",
     "nric": "S****094E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -6704,8 +6704,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-23",
@@ -6758,7 +6758,7 @@
     "rank": "2SG",
     "name": "Faizal bin Ismail",
     "nric": "S****661C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -6912,8 +6912,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-07",
@@ -6966,7 +6966,7 @@
     "rank": "CFC",
     "name": "Faizal bin Zulkifli",
     "nric": "S****197I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -7131,8 +7131,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-18",
@@ -7185,7 +7185,7 @@
     "rank": "PTE",
     "name": "Ng Shao Wei",
     "nric": "S****249E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -7354,8 +7354,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-23",
@@ -7408,7 +7408,7 @@
     "rank": "2SG",
     "name": "Sim Wei Ming",
     "nric": "S****071C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -7570,8 +7570,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-12",
@@ -7627,7 +7627,7 @@
     "rank": "CPL",
     "name": "Chin Zheng Yang",
     "nric": "S****840F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -7781,8 +7781,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-21",
@@ -7835,7 +7835,7 @@
     "rank": "LCP",
     "name": "Lim Yi Xiang",
     "nric": "S****939H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -8004,8 +8004,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-17",
@@ -8058,7 +8058,7 @@
     "rank": "LCP",
     "name": "Karthik s/o Nathan",
     "nric": "S****967Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -8212,8 +8212,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "6 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-19",
@@ -8266,7 +8266,7 @@
     "rank": "CPT",
     "name": "Seah Kah Hui",
     "nric": "S****700A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -8426,8 +8426,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-06",
@@ -8480,7 +8480,7 @@
     "rank": "CPL",
     "name": "Lee Wei Liang",
     "nric": "S****969B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -8634,8 +8634,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-06",
@@ -8688,7 +8688,7 @@
     "rank": "PTE",
     "name": "Iskandar bin Bakar",
     "nric": "S****315J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -8842,8 +8842,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-21",
@@ -8896,7 +8896,7 @@
     "rank": "LCP",
     "name": "Iskandar bin Yusof",
     "nric": "S****939Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -9058,8 +9058,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-26",
@@ -9112,7 +9112,7 @@
     "rank": "REC",
     "name": "Lim Jia Hui",
     "nric": "S****874I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -9274,8 +9274,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "6 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-10",
@@ -9328,7 +9328,7 @@
     "rank": "CPL",
     "name": "Kumar s/o Segaran",
     "nric": "S****187Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -9490,8 +9490,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-11",
@@ -9544,7 +9544,7 @@
     "rank": "LCP",
     "name": "Sim Zhi Hao",
     "nric": "S****725G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -9706,8 +9706,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-08",
@@ -9760,7 +9760,7 @@
     "rank": "3SG",
     "name": "Harish s/o Suppiah",
     "nric": "S****593C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -9928,8 +9928,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-13",
@@ -9982,7 +9982,7 @@
     "rank": "2LT",
     "name": "Koh Jia Le",
     "nric": "S****975G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -10151,8 +10151,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "2 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-03",
@@ -10205,7 +10205,7 @@
     "rank": "CFC",
     "name": "Chua Zhi Hao",
     "nric": "S****551C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -10359,8 +10359,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-11",
@@ -10413,7 +10413,7 @@
     "rank": "1SG",
     "name": "Chua Kah Hui",
     "nric": "S****324C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -10577,8 +10577,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "2 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-24",
@@ -10631,7 +10631,7 @@
     "rank": "CPL",
     "name": "Teo Jun Hao",
     "nric": "S****723I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -10793,8 +10793,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-08-02",
@@ -10847,7 +10847,7 @@
     "rank": "CPL",
     "name": "Ridhwan bin Ahmad",
     "nric": "S****121E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -11015,8 +11015,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-13",
@@ -11069,7 +11069,7 @@
     "rank": "LCP",
     "name": "Arun s/o Devan",
     "nric": "S****181E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -11242,8 +11242,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-14",
@@ -11296,7 +11296,7 @@
     "rank": "1SG",
     "name": "Dinesh s/o Segaran",
     "nric": "S****866B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -11458,8 +11458,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-20",
@@ -11512,7 +11512,7 @@
     "rank": "3SG",
     "name": "Ravi s/o Ramesh",
     "nric": "S****632C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -11674,8 +11674,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-03",
@@ -11728,7 +11728,7 @@
     "rank": "PTE",
     "name": "Prakash s/o Ramesh",
     "nric": "S****448I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -11897,8 +11897,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-23",
@@ -11951,7 +11951,7 @@
     "rank": "CPT",
     "name": "Azhar bin Salleh",
     "nric": "S****062C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -12122,8 +12122,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "6 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-19",
@@ -12176,7 +12176,7 @@
     "rank": "PTE",
     "name": "Shahril bin Hamzah",
     "nric": "S****609G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -12338,8 +12338,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-05",
@@ -12392,7 +12392,7 @@
     "rank": "CFC",
     "name": "Chua Ming Hui",
     "nric": "S****365I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -12554,8 +12554,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-18",
@@ -12608,7 +12608,7 @@
     "rank": "REC",
     "name": "Koh Kai Boon",
     "nric": "S****736A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -12777,8 +12777,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-28",
@@ -12831,7 +12831,7 @@
     "rank": "REC",
     "name": "Harish s/o Ramesh",
     "nric": "S****590J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -12998,8 +12998,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-28",
@@ -13052,7 +13052,7 @@
     "rank": "3SG",
     "name": "Syafiq bin Zulkifli",
     "nric": "S****762Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -13217,8 +13217,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-05",
@@ -13271,7 +13271,7 @@
     "rank": "PTE",
     "name": "Tan Wei Jie",
     "nric": "S****562F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -13436,8 +13436,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-10",
@@ -13490,7 +13490,7 @@
     "rank": "PTE",
     "name": "Hafiz bin Salleh",
     "nric": "S****065C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -13651,8 +13651,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-05",
@@ -13705,7 +13705,7 @@
     "rank": "PTE",
     "name": "Rizwan bin Zulkifli",
     "nric": "S****053F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -13866,8 +13866,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-05",
@@ -13920,7 +13920,7 @@
     "rank": "LCP",
     "name": "Chin Kai Boon",
     "nric": "S****610D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -14080,8 +14080,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-18",
@@ -14134,7 +14134,7 @@
     "rank": "LTA",
     "name": "Shahril bin Rahman",
     "nric": "S****335H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -14288,8 +14288,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-17",
@@ -14342,7 +14342,7 @@
     "rank": "LCP",
     "name": "Ravi s/o Chandran",
     "nric": "S****689H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -14496,8 +14496,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-19",
@@ -14550,7 +14550,7 @@
     "rank": "CPL",
     "name": "Chan Yi Xiang",
     "nric": "S****171A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -14712,8 +14712,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-26",
@@ -14767,7 +14767,7 @@
     "rank": "CPT",
     "name": "Naveen s/o Ramesh",
     "nric": "S****535A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -14929,8 +14929,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-23",
@@ -14983,7 +14983,7 @@
     "rank": "CFC",
     "name": "Shahril bin Ismail",
     "nric": "S****240D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -15147,8 +15147,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-28",
@@ -15201,7 +15201,7 @@
     "rank": "2LT",
     "name": "Faizal bin Bakar",
     "nric": "S****499I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -15355,8 +15355,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-04",
@@ -15409,7 +15409,7 @@
     "rank": "2SG",
     "name": "Syafiq bin Hamzah",
     "nric": "S****401A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -15563,8 +15563,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "6 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-21",
@@ -15617,7 +15617,7 @@
     "rank": "CPL",
     "name": "Syafiq bin Kamarul",
     "nric": "S****006C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -15779,8 +15779,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-20",
@@ -15833,7 +15833,7 @@
     "rank": "LCP",
     "name": "Syafiq bin Zulkifli",
     "nric": "S****229Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -15995,8 +15995,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-08",
@@ -16049,7 +16049,7 @@
     "rank": "CPL",
     "name": "Harish s/o Chandran",
     "nric": "S****978B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -16211,8 +16211,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-21",
@@ -16265,7 +16265,7 @@
     "rank": "2SG",
     "name": "Neo Yi Xiang",
     "nric": "S****563C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -16442,8 +16442,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-30",
@@ -16496,7 +16496,7 @@
     "rank": "PTE",
     "name": "Karthik s/o Chandran",
     "nric": "S****898A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -16681,8 +16681,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-06",
@@ -16735,7 +16735,7 @@
     "rank": "REC",
     "name": "Iskandar bin Salleh",
     "nric": "S****669E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -16908,8 +16908,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "2 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-30",
@@ -16962,7 +16962,7 @@
     "rank": "PTE",
     "name": "Chin Zhi Hao",
     "nric": "S****184D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -17123,8 +17123,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-07",
@@ -17177,7 +17177,7 @@
     "rank": "CPT",
     "name": "Toh Kah Hui",
     "nric": "S****011A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -17338,8 +17338,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-02",
@@ -17392,7 +17392,7 @@
     "rank": "CPT",
     "name": "Hafiz bin Kamarul",
     "nric": "S****550A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -17554,8 +17554,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-19",
@@ -17608,7 +17608,7 @@
     "rank": "2LT",
     "name": "Lee Jia Le",
     "nric": "S****757J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -17796,8 +17796,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-03",
@@ -17850,7 +17850,7 @@
     "rank": "2SG",
     "name": "Arun s/o Balan",
     "nric": "S****290A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -18004,8 +18004,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-23",
@@ -18058,7 +18058,7 @@
     "rank": "2SG",
     "name": "Koh Chee Keong",
     "nric": "S****434B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -18219,8 +18219,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-16",
@@ -18273,7 +18273,7 @@
     "rank": "LCP",
     "name": "Yeo Yong Sheng",
     "nric": "S****011J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -18444,8 +18444,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-05",
@@ -18498,7 +18498,7 @@
     "rank": "CPL",
     "name": "Naveen s/o Chandran",
     "nric": "S****270H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -18652,8 +18652,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-09",
@@ -18706,7 +18706,7 @@
     "rank": "PTE",
     "name": "Sanjay s/o Chandran",
     "nric": "S****260J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -18860,8 +18860,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "2 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-28",
@@ -18914,7 +18914,7 @@
     "rank": "LCP",
     "name": "Chan Wei Jie",
     "nric": "S****427G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -19076,8 +19076,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-06",
@@ -19130,7 +19130,7 @@
     "rank": "LCP",
     "name": "Prakash s/o Ramesh",
     "nric": "S****536G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -19292,8 +19292,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-18",
@@ -19346,7 +19346,7 @@
     "rank": "PTE",
     "name": "Seah Kok Meng",
     "nric": "S****212I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -19508,8 +19508,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-07",
@@ -19562,7 +19562,7 @@
     "rank": "PTE",
     "name": "Dinesh s/o Balan",
     "nric": "S****879J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -19731,8 +19731,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "2 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn B",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-24",
@@ -19785,7 +19785,7 @@
     "rank": "LTA",
     "name": "Toh Jun Jie",
     "nric": "S****187E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -19956,8 +19956,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-29",
@@ -20010,7 +20010,7 @@
     "rank": "LCP",
     "name": "Prakash s/o Balan",
     "nric": "S****756C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -20171,8 +20171,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "5 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-21",
@@ -20225,7 +20225,7 @@
     "rank": "3SG",
     "name": "Iskandar bin Osman",
     "nric": "S****163B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -20387,8 +20387,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-28",
@@ -20441,7 +20441,7 @@
     "rank": "2SG",
     "name": "Lim Jun Hao",
     "nric": "S****945G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -20613,8 +20613,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-18",
@@ -20667,7 +20667,7 @@
     "rank": "CFC",
     "name": "Chin Wei Ming",
     "nric": "S****733I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -20835,8 +20835,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-04",
@@ -20889,7 +20889,7 @@
     "rank": "1SG",
     "name": "Tan Zheng Yang",
     "nric": "S****653C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -21051,8 +21051,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-09",
@@ -21105,7 +21105,7 @@
     "rank": "CPL",
     "name": "Ang Yi Xiang",
     "nric": "S****003I",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -21276,8 +21276,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-20",
@@ -21330,7 +21330,7 @@
     "rank": "CPL",
     "name": "Goh Chee Keong",
     "nric": "S****327G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2019,
@@ -21484,8 +21484,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-17",
@@ -21538,7 +21538,7 @@
     "rank": "CPL",
     "name": "Wong Jia Hui",
     "nric": "S****971C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -21711,8 +21711,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-24",
@@ -21765,7 +21765,7 @@
     "rank": "REC",
     "name": "Amirul bin Rahman",
     "nric": "S****300F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -21919,8 +21919,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-11",
@@ -21973,7 +21973,7 @@
     "rank": "LCP",
     "name": "Quek Wei Ming",
     "nric": "S****442E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2018,
@@ -22135,8 +22135,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-28",
@@ -22189,7 +22189,7 @@
     "rank": "PTE",
     "name": "Kumar s/o Suppiah",
     "nric": "S****332C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -22343,8 +22343,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-13",
@@ -22397,7 +22397,7 @@
     "rank": "LCP",
     "name": "Goh Ren Hao",
     "nric": "S****822G",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -22551,8 +22551,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-17",
@@ -22605,7 +22605,7 @@
     "rank": "CFC",
     "name": "Syafiq bin Hamzah",
     "nric": "S****282E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -22770,8 +22770,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-15",
@@ -22824,7 +22824,7 @@
     "rank": "3SG",
     "name": "Hakim bin Osman",
     "nric": "S****172H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2021,
@@ -22986,8 +22986,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-12",
@@ -23040,7 +23040,7 @@
     "rank": "CFC",
     "name": "Low Jun Hao",
     "nric": "S****586E",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -23194,8 +23194,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "5 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn D",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-29",
@@ -23248,7 +23248,7 @@
     "rank": "LCP",
     "name": "Rizwan bin Hamzah",
     "nric": "S****419C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -23409,8 +23409,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-05",
@@ -23463,7 +23463,7 @@
     "rank": "SSG",
     "name": "Danial bin Yusof",
     "nric": "S****860F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2024,
@@ -23635,8 +23635,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-16",
@@ -23689,7 +23689,7 @@
     "rank": "CFC",
     "name": "Azhar bin Zulkifli",
     "nric": "S****355B",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -23854,8 +23854,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-25",
@@ -23908,7 +23908,7 @@
     "rank": "3SG",
     "name": "Amirul bin Osman",
     "nric": "S****365D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -24070,8 +24070,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-10",
@@ -24124,7 +24124,7 @@
     "rank": "PTE",
     "name": "Koh Zhi Hao",
     "nric": "S****854H",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -24278,8 +24278,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "4 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn C",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-26",
@@ -24332,7 +24332,7 @@
     "rank": "LCP",
     "name": "Neo Kok Meng",
     "nric": "S****473C",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -24486,8 +24486,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-14",
@@ -24540,7 +24540,7 @@
     "rank": "CFC",
     "name": "Goh Zheng Yang",
     "nric": "S****356D",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -24711,8 +24711,8 @@
     "attachment": {
       "value": {
         "type": "detached-out",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "2 SIR"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "Bn A"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-21",
@@ -24765,7 +24765,7 @@
     "rank": "CPL",
     "name": "Naveen s/o Chandran",
     "nric": "S****562J",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -24932,8 +24932,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-04",
@@ -24986,7 +24986,7 @@
     "rank": "CFC",
     "name": "Tan Wei Ming",
     "nric": "S****504Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2017,
@@ -25148,8 +25148,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-31",
@@ -25202,7 +25202,7 @@
     "rank": "2SG",
     "name": "Faizal bin Bakar",
     "nric": "S****008F",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2022,
@@ -25366,8 +25366,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-18",
@@ -25420,7 +25420,7 @@
     "rank": "CPL",
     "name": "Rizwan bin Hamzah",
     "nric": "S****106A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Alpha Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2020,
@@ -25588,8 +25588,8 @@
     "attachment": {
       "value": {
         "type": "organic",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-06-11",
@@ -25642,7 +25642,7 @@
     "rank": "2SG",
     "name": "Foo Ren Hao",
     "nric": "S****709A",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Bravo Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2023,
@@ -25804,8 +25804,8 @@
     "attachment": {
       "value": {
         "type": "attached-in",
-        "homeUnit": "1 SIR",
-        "receivingUnit": "3 SIR (NS)"
+        "homeUnit": "Bn A",
+        "receivingUnit": "6 DIV · NS Bn"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-05",
@@ -25858,7 +25858,7 @@
     "rank": "PTE",
     "name": "Azhar bin Salleh",
     "nric": "S****451Z",
-    "unit": "3 SIR (NS)",
+    "unit": "6 DIV · NS Bn",
     "subUnit": "Charlie Coy",
     "serviceType": "Operationally-Ready NSman",
     "firstYearHK": 2016,
@@ -26026,8 +26026,8 @@
     "attachment": {
       "value": {
         "type": "detached-out",
-        "homeUnit": "3 SIR (NS)",
-        "receivingUnit": "4 SIR"
+        "homeUnit": "6 DIV · NS Bn",
+        "receivingUnit": "Bn B"
       },
       "source": "OneOASIS",
       "asOf": "2026-07-13",

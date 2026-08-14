@@ -38,7 +38,10 @@ export const VOCATION_NAMES = Object.keys(VOCATIONS);
 
 export const SUB_UNITS = ["Alpha Coy", "Bravo Coy", "Charlie Coy"] as const;
 
-export const UNIT_NAME = "3 SIR (NS)";
+/** The roll's unit — an (illustrative) NS infantry battalion under 6 DIV, so
+ *  the validating 6 Div S8s relate to the formation. Sub-units stay companies
+ *  (Alpha/Bravo/Charlie Coy). The specific battalion designation is illustrative. */
+export const UNIT_NAME = "6 DIV · NS Bn";
 
 /** Freshness thresholds (days). Volatile fields go stale fast; the gap
  *  domains carry a longer currency window. Spec §6 field-level currency. */
